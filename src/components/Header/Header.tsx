@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './Header.css';
 import { NavBar } from './NavBar/NavBar';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 export const Header: React.FC = () => {
+  const categories = useTypedSelector((state) => state.categories);
+  console.log(categories);
+
   interface IBackground {
     img: string;
     link: string;
@@ -14,9 +18,15 @@ export const Header: React.FC = () => {
     link: '',
     author: '',
   });
+  const randomCategories = () => {
+    return Math.floor(Math.random() * categories.length)
+  };
 
   const fetchImg = () => {
-    fetch('https://api.pexels.com/v1/search?query=car&per_page=1', {
+    const category = categories[randomCategories()]
+    console.log(category);
+    
+    fetch(`https://api.pexels.com/v1/search?query=${category}&per_page=1`, {
       headers: {
         Authorization:
           '563492ad6f917000010000014640aabb4e9d420cbe1c0df7daf4c2bf',
@@ -58,7 +68,7 @@ export const Header: React.FC = () => {
       </div>
       <div className="header-background__footer">
         <a href={background.link} target="blank">
-          <span className="background-author">{background.author}</span>
+          <span className="background-author">Photo by: {background.author}</span>
         </a>
       </div>
     </header>
