@@ -1,10 +1,11 @@
 export interface IInitialState {
-  categories: string[],
-  photo: IPhotoState
+  categories: string[];
+  photo: IPhotoState;
 }
 
 export interface IPhotoState {
-  photos: string[],
-  loading: boolean,
-  error: string | null
+  photos: any[];
+  loading: boolean;
+  error: string | null;
+  total_results: number;
 }

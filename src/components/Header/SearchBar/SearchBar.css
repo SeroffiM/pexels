@@ -1,0 +1,30 @@
+.search-bar {
+  width: 100%;
+  max-width: 75rem;
+  margin-right: 45rem;
+}
+.search-bar__container {
+  display: flex;
+  border-radius: 0.6rem;
+  background: #FFF;
+}
+.search-bar__container input {
+  flex: 1;
+  padding: 1.2rem 1.6rem;
+  font-size: 1.7rem;
+  line-height: 2.2rem;
+  font-weight: 300;
+  color: #1a1a1a;
+  border-radius: 0.6rem;
+  border: none;
+  display: block;
+}
+.search-bar__container button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.search-bar__container input:focus {
+  outline: none;
+}
