@@ -14,6 +14,7 @@ export const initialState:IInitialState = {
   photo: {
     photos: [],
     loading: false,
-    error: null
+    error: null,
+    total_results: 0
   }
 };

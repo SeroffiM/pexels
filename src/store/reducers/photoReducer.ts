@@ -5,15 +5,24 @@ import { PhotoAction, PhotosActionTypes } from '../types/actionTypes/photoAction
 export const photoReducer = ( state = initialState.photo, action: PhotoAction ): IPhotoState => {
   switch (action.type) {
     case PhotosActionTypes.FETCH_PHOTOS:
-      return { loading: true, error: null, photos: [] };
+      return { 
+        ...state,
+        loading: true
+       };
     case PhotosActionTypes.FETCH_PHOTOS_SUCCESS:
+      console.log(action);
       return {
         loading: false,
         error: null,
-        photos: [state,...action.payload],
+        photos: [...state.photos,...action.payload.photos],
+        total_results: action.payload.total_results
       };
     case PhotosActionTypes.FETCH_PHOTOS_ERROR:
-      return { loading: false, error: action.payload, photos: [] };
+      return { 
+        ...state,
+        loading: false,
+        error: action.payload
+       };
     default:
       return state
   }
