@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
-import { Header } from '../../Header/Header';
 import { Gallery } from '../../Gallery/Gallery';
 import './MainPage.css';
 import { useFetchPhotos } from '../../../hooks/useFetchPhotos';
+import { HeaderBackground } from './HeaderBackground/HeaderBackground';
 
 export const MainPage: React.FC = () => {
   const [page, setPage] = useState<number>(1);
@@ -38,7 +38,7 @@ export const MainPage: React.FC = () => {
 
   return (
     <>
-      <Header />
+      <HeaderBackground />
       <main className="main">
         <div className="container">
           <Gallery
