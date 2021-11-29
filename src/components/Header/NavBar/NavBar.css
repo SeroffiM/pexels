@@ -20,11 +20,13 @@
 
 .header-nav {
   width: 100%;
-  position: fixed;
+  height: 100%;
   z-index: 1000;
+  max-height: 6.6rem;
   display: flex;
+  position: fixed;
   align-items: center;
-  min-height: 6.6rem;
+
   padding: 0 1.5rem;
   justify-content: space-between;
   transition: all 0.3s ease-in-out;

@@ -1,0 +1,26 @@
+.background__categories {
+  display: flex;
+  padding-top: 1.5rem;
+}
+.categories__list {
+  display: flex;
+  column-gap: 0.6rem;
+}
+.background__categories-suggested {
+  font-size: 1.5rem;
+}
+.categories__item {
+  display: flex;
+  align-items: center;
+}
+.categories__link {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.2rem;
+  opacity: 0.8;
+  line-height: 1.8rem;
+  font-weight: 300;
+}
+.categories__link:hover {
+  opacity: 1;
+}

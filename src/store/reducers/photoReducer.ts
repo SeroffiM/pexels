@@ -7,9 +7,22 @@ export const photoReducer = ( state = initialState.photo, action: PhotoAction ):
     case PhotosActionTypes.FETCH_PHOTOS:
       return { 
         ...state,
-        loading: true
+        loading: true 
        };
     case PhotosActionTypes.FETCH_PHOTOS_SUCCESS:
+      console.log(action);
+      return {
+        loading: false,
+        error: null,
+        photos: [...action.payload.photos],
+        total_results: action.payload.total_results
+      };
+      case PhotosActionTypes.FETCH_MORE_PHOTOS:
+      return { 
+        ...state,
+        loading: true 
+       };
+    case PhotosActionTypes.FETCH_MORE_PHOTOS_SUCCESS:
       console.log(action);
       return {
         loading: false,

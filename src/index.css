@@ -6,7 +6,7 @@
 }
 
 /* Убираем внутренние отступы */
-ul[class],
+ul,
 ol[class] {
   padding: 0;
 }
@@ -69,6 +69,7 @@ select {
 
 html {
   font-size: 10px;
+  scroll-behavior: smooth;
 }
 body {
   font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
