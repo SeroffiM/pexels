@@ -7,6 +7,7 @@ export const photoReducer = ( state = initialState.photo, action: PhotoAction ):
     case PhotosActionTypes.FETCH_PHOTOS:
       return { 
         ...state,
+        photos:[],
         loading: true 
        };
     case PhotosActionTypes.FETCH_PHOTOS_SUCCESS:
