@@ -34,7 +34,7 @@ export const Gallery: React.FC<GalleryProps> = ({
   }
   return (
     <div className="gallery-container">
-      <h1 className="gallery__title">{query} Photos</h1>
+      {query ? <h1 className="gallery__title">{query} Photos</h1> : null}
       <ResponsiveMasonry columnsCountBreakPoints={{ 320: 2, 1077: 3, 1900: 4 }}>
         <Masonry gutter="1.65rem">
           {photos.map((photo) => {
