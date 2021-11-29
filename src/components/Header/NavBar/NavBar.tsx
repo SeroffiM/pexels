@@ -1,33 +1,49 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
+import { useMatch } from 'react-router';
 import logo from '../../../assets/img/icons/logo.svg';
 import { SearchBar } from '../SearchBar/SearchBar';
+import { NavLink } from 'react-router-dom';
 import './NavBar.css';
 
-export const NavBar: React.FC = () => {
+interface INavBar {
+  queryText: string;
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleQuery: (value: string) => void;
+  handleReturnHome: () => void;
+}
+export const NavBar: React.FC<INavBar> = ({
+  queryText,
+  handleChange,
+  handleQuery,
+  handleReturnHome,
+}: INavBar) => {
   const [position, setPosition] = useState<number>(0);
-  const [queryText, setQueryText] = useState('');
+
+  const match = useMatch('/');
+  const showSearchBar = position > 50 || !match;
 
   const handleScroll = () => {
     setPosition(window.scrollY);
   };
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setQueryText(e.target.value);
-    console.log(e.target.value);
-  };
+
   useEffect(() => {
+    console.log(match, 'matchSearch');
     setPosition(window.scrollY);
     window.addEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <nav className={position > 50 ? 'header-nav fixed' : 'header-nav'}>
-      <div className="header-logo">
+    <nav className={showSearchBar ? 'header-nav fixed' : 'header-nav'}>
+      <NavLink onClick={handleReturnHome} to="/" className="header-logo">
         <img src={logo} className="logo" />
         <p>Pexels</p>
-      </div>
-      {position > 50 ? (
-        <SearchBar handleChange={handleChange} value={queryText} />
+      </NavLink>
+      {showSearchBar ? (
+        <SearchBar
+          handleChange={handleChange}
+          value={queryText}
+          handleQuery={handleQuery}
+        />
       ) : null}
       <div className="header-lng">
         <label htmlFor="ru">Ru</label> <input type="radio" id="ru" name="lng" />

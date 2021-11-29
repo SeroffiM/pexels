@@ -1,0 +1,5 @@
+.search-tabs__settings-list {
+  display: flex;
+  column-gap: 0.8rem;
+}
+

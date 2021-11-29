@@ -35,6 +35,14 @@
   -webkit-animation-delay: 450ms;
   animation-delay: 450ms;
 }
+.gallery__title {
+  text-align: center;
+  font-size: 2.6rem;
+  line-height: 1.2;
+  font-weight: 800;
+  padding: 3rem 0;
+  text-transform: capitalize;
+}
 @keyframes move {
   0% {
     left: 0;
