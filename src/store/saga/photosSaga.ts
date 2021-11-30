@@ -12,8 +12,8 @@ import { all, call, put, takeLatest,takeLeading } from '@redux-saga/core/effects
 const getPhotos = async (api: string) => {
   const response = await fetch(api, {
     headers: {
-      // Authorization: '563492ad6f917000010000014640aabb4e9d420cbe1c0df7daf4c2bf',
-      Authorization: '563492ad6f91700001000001b32c8f0c567d424cb0327fc4174a09b8',
+      Authorization: '563492ad6f917000010000014640aabb4e9d420cbe1c0df7daf4c2bf',
+      // Authorization: '563492ad6f91700001000001b32c8f0c567d424cb0327fc4174a09b8',
     },
   });
   return await response.json();

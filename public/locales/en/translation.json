@@ -1,0 +1,9 @@
+{
+  "title": "Internationalizing with i18next",
+  "page_not_found": "404 Page not found",
+  "main_title":"The best free stock photos, royalty free images & videos shared by creators.",
+  "description": {
+    "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
+    "part2": "Switch language between english and russian using buttons above."
+  }
+}

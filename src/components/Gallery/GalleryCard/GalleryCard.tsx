@@ -38,7 +38,6 @@ export const GalleryCard: React.FC<IPhotos> = ({
   };
 
   const handleLikes = () => {
-    if (localStorage.getItem('likes')) {
       let values: number[] = getLikes();
       if (isLiked()) {
         values = values.filter((item) => item !== id);
@@ -47,7 +46,6 @@ export const GalleryCard: React.FC<IPhotos> = ({
       }
       setLiked(!liked);
       window.localStorage.setItem('likes', JSON.stringify(values));
-    }
   };
   useEffect(() => {
     getBlob();
