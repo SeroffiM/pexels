@@ -57,6 +57,7 @@
   column-gap: 1rem;
   min-height: 4rem;
   padding: 1rem 2rem;
+  white-space: nowrap;
 }
 .search-tabs__modal-item:hover {
   background: #e8e8e8;
