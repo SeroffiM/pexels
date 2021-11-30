@@ -4,6 +4,7 @@ import logo from '../../../assets/img/icons/logo.svg';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { NavLink } from 'react-router-dom';
 import './NavBar.css';
+import { Languages } from './Languages/Languages';
 
 interface INavBar {
   queryText: string;
@@ -45,10 +46,7 @@ export const NavBar: React.FC<INavBar> = ({
           handleQuery={handleQuery}
         />
       ) : null}
-      <div className="header-lng">
-        <label htmlFor="ru">Ru</label> <input type="radio" id="ru" name="lng" />
-        <label htmlFor="en">En</label> <input type="radio" id="en" name="lng" />
-      </div>
+      <Languages />
     </nav>
   );
 };
