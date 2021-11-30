@@ -9,7 +9,7 @@
   "categories": {
     "title": "Photos",
     "photos_count": "K",
-    "not_found_title":"We couldn't find anything for",
+    "not_found_title": "We couldn't find anything for",
     "orientationSetting": {
       "settingName": "Orientation",
       "all": "All orientations",
@@ -20,10 +20,9 @@
     "sizeSetting": {
       "settingName": "Size",
       "all": "All sizes",
-      "large": "Large",
-      "medium": "Medium",
-      "small": "Small",
-      "mp": "MP"
+      "large": "Large 24MP",
+      "medium": "Medium 12MP",
+      "small": "Small 4MP"
     }
   }
 }
