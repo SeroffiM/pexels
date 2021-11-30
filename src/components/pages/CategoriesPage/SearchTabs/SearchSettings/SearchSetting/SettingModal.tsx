@@ -21,13 +21,11 @@ export const SettingModal: React.FC<ISettingModal> = ({
   setting,
   queryFilter,
 }: ISettingModal) => {
-  // const queryFilter = useQuery();
-
   const getLink = (filter: string): string => {
     if (filter) {
-      queryFilter.set(setting.toLowerCase(), filter);
+      queryFilter.set(setting, filter);
     } else {
-      queryFilter.delete(setting.toLowerCase());
+      queryFilter.delete(setting);
     }
     return queryFilter.toString();
   };

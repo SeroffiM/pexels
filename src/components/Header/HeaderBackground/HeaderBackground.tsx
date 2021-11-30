@@ -1,4 +1,5 @@
 import React, { useEffect, useState, ChangeEvent, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { CategoriesList } from './CategoriesList/CategoriesList';
@@ -19,6 +20,7 @@ export const HeaderBackground: React.FC<IHeaderBackground> = ({
   queryText,
   handleQuery,
 }: IHeaderBackground) => {
+  const [t] = useTranslation();
   const categories = useTypedSelector((state) => state.categories);
   const [background, setBackground] = useState<IBackground>({
     img: '',
@@ -71,10 +73,7 @@ export const HeaderBackground: React.FC<IHeaderBackground> = ({
         {background.img ? <img src={background.img} alt="background" /> : null}
       </div>
       <div className="background__content-wrapper">
-        <h1 className="background__title">
-          The best free stock photos, royalty free images & videos shared by
-          creators.
-        </h1>
+        <h1 className="background__title">{t('header.main_title')}</h1>
         <SearchBar
           handleChange={handleChange}
           value={queryText}
@@ -85,7 +84,8 @@ export const HeaderBackground: React.FC<IHeaderBackground> = ({
       <div className="section-background__footer">
         <a href={background.link} target="blank">
           <span className="background-author">
-            Photo by: {background.author}
+            {t('header.photo_by')}&nbsp;
+            {background.author}
           </span>
         </a>
       </div>

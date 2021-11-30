@@ -3,6 +3,7 @@ import { SearchIcon } from './SearchIcon';
 import './SearchBar.css';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '../../../hooks/useQuery';
+import { useTranslation } from 'react-i18next';
 
 interface ISearchBar {
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -15,6 +16,7 @@ export const SearchBar: React.FC<ISearchBar> = ({
   value,
   handleQuery,
 }: ISearchBar) => {
+  const [t] = useTranslation();
   const navigate = useNavigate();
   const query = useQuery().toString();
   const handleSubmit = (e: FormEvent) => {
@@ -32,7 +34,7 @@ export const SearchBar: React.FC<ISearchBar> = ({
             onChange={handleChange}
             required
             autoComplete="off"
-            placeholder="Search for free photos"
+            placeholder={t('header.search')}
           />
           <button>
             <i>

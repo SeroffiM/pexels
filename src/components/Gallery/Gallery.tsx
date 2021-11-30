@@ -2,6 +2,7 @@ import React from 'react';
 import './Gallery.css';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import { GalleryCard } from './GalleryCard/GalleryCard';
+import { useTranslation } from 'react-i18next';
 
 interface GalleryProps {
   photos: any[];
@@ -26,15 +27,22 @@ export const Gallery: React.FC<GalleryProps> = ({
   totalResults,
   query,
 }: GalleryProps) => {
+  const [t] = useTranslation();
   console.log(photos);
   if (totalResults === 0 && !loading) {
     return (
-      <h1 className="gallery__title">{`We Couldn't Find Anything For "${query}"`}</h1>
+      <h1 className="gallery__title">{`${t(
+        'categories.not_found_title'
+      )} "${query}"`}</h1>
     );
   }
   return (
     <div className="gallery-container">
-      {query ? <h1 className="gallery__title">{query} Photos</h1> : null}
+      {query ? (
+        <h1 className="gallery__title">
+          {query} {t('categories.title')}
+        </h1>
+      ) : null}
       <ResponsiveMasonry columnsCountBreakPoints={{ 320: 2, 1077: 3, 1900: 4 }}>
         <Masonry gutter="1.65rem">
           {photos.map((photo) => {

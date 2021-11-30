@@ -7,6 +7,7 @@ import { useQuery } from '../../../../../../hooks/useQuery';
 interface ISearchSetting {
   query: string | undefined;
   setting: string;
+  settingName: string;
   acitveFilter: string;
   svg: () => JSX.Element;
   search_filters: {
@@ -21,15 +22,19 @@ export const SearchSetting: React.FC<ISearchSetting> = ({
   setting,
   svg,
   search_filters,
+  settingName,
   acitveFilter,
 }: ISearchSetting) => {
   const [hover, setHover] = useState(false);
   const queryFilter = useQuery();
-  const handleHover = () => {
-    setHover(!hover);
+  const handleHoverEnter = () => {
+    setHover(true);
+  };
+  const handleHoverLeave = () => {
+    setHover(false);
   };
   const handleActiveFilter = () => {
-    let name = setting;
+    let name = settingName;
 
     search_filters.forEach((item) => {
       if (item.filter === acitveFilter && acitveFilter) {
@@ -39,15 +44,15 @@ export const SearchSetting: React.FC<ISearchSetting> = ({
     return name;
   };
   const resetFilterLink = () => {
-    queryFilter.delete(setting.toLowerCase());
+    queryFilter.delete(setting);
     return queryFilter.toString();
   };
 
   return (
     <li
       className={`search-tabs__settings-item ${acitveFilter ? 'active' : ''}`}
-      onMouseEnter={handleHover}
-      onMouseLeave={handleHover}
+      onMouseEnter={handleHoverEnter}
+      onMouseLeave={handleHoverLeave}
     >
       <i>{svg()}</i>
       <span>{handleActiveFilter()}</span>
@@ -61,7 +66,10 @@ export const SearchSetting: React.FC<ISearchSetting> = ({
         />
       ) : null}
       {acitveFilter ? (
-        <NavLink to={`/search/${query}?${resetFilterLink()}`} className="search-tabs__settings-cancel" />
+        <NavLink
+          to={`/search/${query}?${resetFilterLink()}`}
+          className="search-tabs__settings-cancel"
+        />
       ) : null}
     </li>
   );

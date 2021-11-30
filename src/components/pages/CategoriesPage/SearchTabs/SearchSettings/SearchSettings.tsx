@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { HorizontalIcon } from '../searchIcons/orientationIcons/HorizontalIcon';
 import { OrientationIcon } from '../searchIcons/orientationIcons/OrientationIcon';
 import { SquareIcon } from '../searchIcons/orientationIcons/SquareIcon';
@@ -21,54 +22,57 @@ export const SearchSettings: React.FC<ISearchSettings> = ({
   orientation,
   size,
 }: ISearchSettings) => {
+  const [t] = useTranslation();
   const settings = [
     {
-      setting: 'Orientation',
+      setting: 'orientation',
+      settingName: t('categories.orientationSetting.settingName'),
       svg: () => <OrientationIcon />,
       activeFilter: orientation,
       search_filters: [
         {
-          filterName: 'All Orientations',
+          filterName: t('categories.orientationSetting.all'),
           filter: '',
         },
         {
-          filterName: 'Horizontal',
+          filterName: t("categories.orientationSetting.horizontal"),
           filter: 'landscape',
           svg: () => <HorizontalIcon />,
         },
         {
-          filterName: 'Vertical',
+          filterName: t("categories.orientationSetting.vertical"),
           filter: 'portrait',
           svg: () => <VerticalIcon />,
         },
         {
-          filterName: 'Square',
+          filterName: t("categories.orientationSetting.square"),
           filter: 'square',
           svg: () => <SquareIcon />,
         },
       ],
     },
     {
-      setting: 'Size',
+      setting: 'size',
+      settingName: t('categories.sizeSetting.settingName'),
       svg: () => <SizeIcon />,
       activeFilter: size,
       search_filters: [
         {
-          filterName: 'All Sizes',
+          filterName: t("categories.sizeSetting.all"),
           filter: '',
         },
         {
-          filterName: 'Large',
+          filterName: t("categories.sizeSetting.large"),
           filter: 'large',
           svg: () => <LargeIcon />,
         },
         {
-          filterName: 'Medium',
+          filterName: t("categories.sizeSetting.medium"),
           filter: 'medium',
           svg: () => <MediumIcon />,
         },
         {
-          filterName: 'Small',
+          filterName: t("categories.sizeSetting.small"),
           filter: 'small',
           svg: () => <SmallIcon />,
         },
@@ -82,6 +86,7 @@ export const SearchSettings: React.FC<ISearchSettings> = ({
         return (
           <SearchSetting
             setting={item.setting}
+            settingName={item.settingName}
             acitveFilter={item.activeFilter}
             svg={item.svg}
             key={index}

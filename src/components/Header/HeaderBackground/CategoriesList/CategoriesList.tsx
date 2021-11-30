@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import './CategoriesList.css';
 
@@ -9,9 +10,12 @@ interface ICategoriesList {
 export const CategoriesList: React.FC<ICategoriesList> = ({
   categories,
 }: ICategoriesList) => {
+  const [t] = useTranslation();
   return (
     <div className="background__categories">
-      <p className="background__categories-suggested">Suggested:&nbsp;</p>
+      <p className="background__categories-suggested">
+        {t('header.suggested')}&nbsp;
+      </p>
       <ul className="categories__list">
         {categories.map((item, index) => {
           return (

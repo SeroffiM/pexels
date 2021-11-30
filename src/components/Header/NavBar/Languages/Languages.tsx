@@ -1,11 +1,11 @@
-import React, { MouseEventHandler, useState } from 'react';
+import React, { useState } from 'react';
 import './Languages.css';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { LanguagesModal } from './LanguagesModal';
 
 export const Languages: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const [t,i18n] = useTranslation();
   const [hover, setHover] = useState(false);
   const currentLanguage = i18next.resolvedLanguage;
   const languageSettings = [
