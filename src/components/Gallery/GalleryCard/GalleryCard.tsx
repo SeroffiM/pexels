@@ -22,8 +22,13 @@ export const GalleryCard: React.FC<IPhotos> = ({
   };
 
   const getLikes = (): number[] => {
+    let value = [];
     const likes = window.localStorage.getItem('likes');
-    return JSON.parse(likes ?? '');
+    if (likes) {
+      value = JSON.parse(likes);
+    }
+
+    return value;
   };
   const isLiked = () => {
     const values: number[] = getLikes();
@@ -38,14 +43,14 @@ export const GalleryCard: React.FC<IPhotos> = ({
   };
 
   const handleLikes = () => {
-      let values: number[] = getLikes();
-      if (isLiked()) {
-        values = values.filter((item) => item !== id);
-      } else {
-        values.push(id);
-      }
-      setLiked(!liked);
-      window.localStorage.setItem('likes', JSON.stringify(values));
+    let values: number[] = getLikes();
+    if (isLiked()) {
+      values = values.filter((item) => item !== id);
+    } else {
+      values.push(id);
+    }
+    setLiked(!liked);
+    window.localStorage.setItem('likes', JSON.stringify(values));
   };
   useEffect(() => {
     getBlob();
