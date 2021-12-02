@@ -89,3 +89,9 @@ body {
     max-width: 1850px;
   }
 }
+
+@media (max-width: 900px) {
+  html {
+    font-size: 12px;
+  }
+}

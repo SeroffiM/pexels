@@ -35,17 +35,21 @@ export const NavBar: React.FC<INavBar> = ({
 
   return (
     <nav className={showSearchBar ? 'header-nav fixed' : 'header-nav'}>
-      <NavLink onClick={handleReturnHome} to="/" className="header-logo">
-        <img src={logo} className="logo" />
-        <p>Pexels</p>
-      </NavLink>
-      {showSearchBar ? (
-        <SearchBar
-          handleChange={handleChange}
-          value={queryText}
-          handleQuery={handleQuery}
-        />
-      ) : null}
+      <div className="header__search-logo-wrapper">
+        <NavLink onClick={handleReturnHome} to="/" className="header-logo">
+          <div className="header__logo-wrapper">
+            <img src={logo} className="logo" />
+          </div>
+          <p>Pexels</p>
+        </NavLink>
+        {showSearchBar ? (
+          <SearchBar
+            handleChange={handleChange}
+            value={queryText}
+            handleQuery={handleQuery}
+          />
+        ) : null}
+      </div>
       <Languages />
     </nav>
   );

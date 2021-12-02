@@ -1,7 +1,6 @@
 .search-bar {
   width: 100%;
   max-width: 75rem;
-  margin-right: 45rem;
 }
 .search-bar__container {
   display: flex;
@@ -9,6 +8,7 @@
   background: #FFF;
 }
 .search-bar__container input {
+  width: 100%;
   flex: 1;
   padding: 1.2rem 1.6rem;
   font-size: 1.7rem;
@@ -37,3 +37,11 @@ input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+@media (max-width: 900px) {
+  .header__search-logo-wrapper .search-bar__container input {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+  }
+}
+
