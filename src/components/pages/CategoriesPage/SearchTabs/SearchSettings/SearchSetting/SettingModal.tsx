@@ -7,6 +7,7 @@ interface ISettingModal {
   setting: string;
   activeFilter: string;
   queryFilter: URLSearchParams;
+  closeSetting: (e: React.MouseEvent) => void;
   search_filters: {
     filterName: string;
     filter: string;
@@ -20,6 +21,7 @@ export const SettingModal: React.FC<ISettingModal> = ({
   activeFilter,
   setting,
   queryFilter,
+  closeSetting,
 }: ISettingModal) => {
   const getLink = (filter: string): string => {
     if (filter) {
@@ -42,7 +44,11 @@ export const SettingModal: React.FC<ISettingModal> = ({
               key={index}
               className={`search-tabs__modal-item ${active ? 'active' : ''}`}
             >
-              <NavLink to={link} className="search-tabs__modal-link">
+              <NavLink
+                to={link}
+                className="search-tabs__modal-link"
+                onClick={closeSetting}
+              >
                 {item.svg ? <i>{item.svg()}</i> : null}
                 <span>{item.filterName}</span>
               </NavLink>

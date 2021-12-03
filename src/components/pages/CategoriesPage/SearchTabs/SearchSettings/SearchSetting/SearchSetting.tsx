@@ -3,6 +3,7 @@ import { SettingModal } from './SettingModal';
 import './SearchSetting.css';
 import { NavLink } from 'react-router-dom';
 import { useQuery } from '../../../../../../hooks/useQuery';
+import { useIsMobile } from '../../../../../../hooks/useIsMobile';
 
 interface ISearchSetting {
   query: string | undefined;
@@ -27,11 +28,25 @@ export const SearchSetting: React.FC<ISearchSetting> = ({
 }: ISearchSetting) => {
   const [hover, setHover] = useState(false);
   const queryFilter = useQuery();
+  const isMobile = useIsMobile();
   const handleHoverEnter = () => {
-    setHover(true);
+    if (!isMobile) {
+      setHover(true);
+    }
   };
   const handleHoverLeave = () => {
+    if (!isMobile) {
+      setHover(false);
+    }
+  };
+  const closeSetting = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setHover(false);
+  };
+  const handleMobileTouch = () => {
+    if (isMobile) {
+      setHover(!hover);
+    }
   };
   const handleActiveFilter = () => {
     let name = settingName;
@@ -53,6 +68,7 @@ export const SearchSetting: React.FC<ISearchSetting> = ({
       className={`search-tabs__settings-item ${acitveFilter ? 'active' : ''}`}
       onMouseEnter={handleHoverEnter}
       onMouseLeave={handleHoverLeave}
+      onClick={handleMobileTouch}
     >
       <i>{svg()}</i>
       <span>{handleActiveFilter()}</span>
@@ -63,10 +79,12 @@ export const SearchSetting: React.FC<ISearchSetting> = ({
           query={query}
           setting={setting}
           queryFilter={queryFilter}
+          closeSetting={closeSetting}
         />
       ) : null}
       {acitveFilter ? (
         <NavLink
+          onClick={closeSetting}
           to={`/search/${query}?${resetFilterLink()}`}
           className="search-tabs__settings-cancel"
         />
