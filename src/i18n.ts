@@ -13,7 +13,7 @@ i18n
       useSuspense: true,
     },
     fallbackLng: 'en',
-    debug: true,
+    debug: false,
     compatibilityJSON: 'v3',
     detection: {
       order: ['queryString', 'cookie', 'navigator'],

@@ -28,7 +28,6 @@ export const Gallery: React.FC<GalleryProps> = ({
   query,
 }: GalleryProps) => {
   const [t] = useTranslation();
-  console.log(photos);
   if (totalResults === 0 && !loading) {
     return (
       <h1 className="gallery__title">{`${t(

@@ -62,7 +62,6 @@ export const GalleryCard: React.FC<IPhotos> = ({
   const handleHover = () => {
     setIsHoverd(!isHoverd);
   };
-  console.log('reRender');
 
   return (
     <div

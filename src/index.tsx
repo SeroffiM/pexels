@@ -10,16 +10,6 @@ import './index.css';
 import { store } from './store/store';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-const getNavigatorLanguage = () => {
-  if (navigator.languages && navigator.languages.length) {
-    return navigator.languages[0];
-  } else {
-    return navigator.language || 'en';
-  }
-};
-
-console.log(getNavigatorLanguage());
-
 import './i18n';
 
 ReactDOM.render(

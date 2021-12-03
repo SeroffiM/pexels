@@ -8,11 +8,9 @@ export const Header: React.FC = () => {
   const match = useMatch('/search/:query');
   const matchMain = useMatch('/');
   const [queryNav, setQueryNav] = useState<string>('');
-  console.log('HHH', match);
 
   const [queryBackground, setQueryBackground] = useState('');
 
-  console.log(match?.params.query, 'header');
   useEffect(() => {
     setQueryNav(match?.params.query || '');
   }, [match?.params.query]);

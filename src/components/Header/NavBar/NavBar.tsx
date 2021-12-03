@@ -28,7 +28,6 @@ export const NavBar: React.FC<INavBar> = ({
   };
 
   useEffect(() => {
-    console.log(match, 'matchSearch');
     setPosition(window.scrollY);
     window.addEventListener('scroll', handleScroll);
   }, []);
