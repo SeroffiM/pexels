@@ -14,8 +14,9 @@ i18n
     },
     fallbackLng: 'en',
     debug: true,
+    compatibilityJSON: 'v3',
     detection: {
-      order: ['queryString', 'cookie','navigator'],
+      order: ['queryString', 'cookie', 'navigator'],
       caches: ['cookie'],
     },
     interpolation: {

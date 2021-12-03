@@ -16,10 +16,10 @@ export const LanguagesModal: React.FC<ILanguagesModal> = ({
   currentLanguage,
   handleHover,
 }: ILanguagesModal) => {
-  const handleChangeLng = (lng:string) => {
-    handleLng(lng)
-    handleHover()
-  }
+  const handleChangeLng = (lng: string) => {
+    handleLng(lng);
+    handleHover();
+  };
   return (
     <div className="lng__drop-down">
       <ul className="lng__modal-list">

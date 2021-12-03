@@ -1,10 +1,10 @@
 .background__categories {
   display: flex;
   padding-top: 1.5rem;
+  overflow: hidden;
 }
 .categories__list {
   display: flex;
-  column-gap: 0.6rem;
 }
 .background__categories-suggested {
   font-size: 1.5rem;
@@ -12,6 +12,10 @@
 .categories__item {
   display: flex;
   align-items: center;
+  margin-right: 0.6rem;
+}
+.categories__item:last-child {
+  margin-right: 0;
 }
 .categories__link {
   text-decoration: none;
@@ -20,6 +24,7 @@
   opacity: 0.8;
   line-height: 1.8rem;
   font-weight: 300;
+  white-space: nowrap;
 }
 .categories__link:hover {
   opacity: 1;

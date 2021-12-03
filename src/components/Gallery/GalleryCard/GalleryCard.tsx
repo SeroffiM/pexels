@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
+import { useIsMobile } from '../../../hooks/useIsMobile';
 import { IPhotos } from '../Gallery';
 import './GalleryCard.css';
 import { DownloadIcon } from './icons/DownloadIcon';
@@ -13,7 +15,8 @@ export const GalleryCard: React.FC<IPhotos> = ({
   const [isHoverd, setIsHoverd] = useState<boolean>(false);
   const [liked, setLiked] = useState<boolean>(false);
   const [downloadLink, setDownloadLink] = useState('');
-
+  const isMobile = useIsMobile();
+  const showAuthor = useMediaQuery({ query: '(min-width: 550px)' });
   const getBlob = async () => {
     const response = await fetch(src.large);
     const blob = await response.blob();
@@ -68,11 +71,13 @@ export const GalleryCard: React.FC<IPhotos> = ({
       onMouseLeave={handleHover}
     >
       <img src={src.large} />
-      {isHoverd ? (
+      {isHoverd || isMobile ? (
         <div className="card-info card-info-overlay">
-          <a className="card-link" href={photographer_url} target="blank">
-            {photographer}
-          </a>
+          {showAuthor ? (
+            <a className="card-link" href={photographer_url} target="blank">
+              {photographer}
+            </a>
+          ) : null}
           <div className="card-icons">
             <LikeIcon liked={liked} handleLikes={handleLikes} />
             <DownloadIcon
