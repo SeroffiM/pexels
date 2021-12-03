@@ -1,0 +1,12 @@
+.search-tabs {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.6rem 0;
+}
+
+@media (max-width: 650px) {
+  .search-tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+}

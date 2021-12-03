@@ -1,0 +1,24 @@
+.search-tabs__settings-list {
+  display: flex;
+}
+.search-tabs__settings-item {
+  margin-right: 0.8rem;
+}
+.search-tabs__settings-item:last-child {
+  margin-right: 0;
+}
+@media (max-width: 650px) {
+  .search-tabs__settings-item {
+    margin-right: 0;
+  }
+  .search-tabs__settings-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .search-tabs__settings-item {
+    margin-bottom: 1.2rem;
+  }
+  .search-tabs__settings-item:last-child {
+    margin-bottom: 0;
+  }
+}

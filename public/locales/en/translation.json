@@ -1,0 +1,28 @@
+{
+  "page_not_found": "404 Page not found",
+  "header": {
+    "main_title": "The best free stock photos, royalty free images & videos shared by creators.",
+    "suggested": "Suggested:",
+    "photo_by": "Photo by:",
+    "search": "Search for free photos"
+  },
+  "categories": {
+    "title": "Photos",
+    "photos_count": "K",
+    "not_found_title": "We couldn't find anything for",
+    "orientationSetting": {
+      "settingName": "Orientation",
+      "all": "All orientations",
+      "horizontal": "Horizontal",
+      "vertical": "Vertical",
+      "square": "Square"
+    },
+    "sizeSetting": {
+      "settingName": "Size",
+      "all": "All sizes",
+      "large": "Large 24MP",
+      "medium": "Medium 12MP",
+      "small": "Small 4MP"
+    }
+  }
+}

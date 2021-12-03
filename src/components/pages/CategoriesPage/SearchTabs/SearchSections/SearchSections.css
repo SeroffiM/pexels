@@ -1,0 +1,40 @@
+.search-tabs__sectionts-link {
+  display: block;
+  display: flex;
+  font-size: 1.4rem;
+  line-height: 0.9;
+  font-weight: 600;
+  padding: 0.6rem 1.1rem 0.6rem 0.9rem;
+  border: 1px solid #e8e8e8;
+  text-decoration: none;
+  letter-spacing: 0.25px;
+  color: #9e9e9e;
+  align-items: center;
+  column-gap: 0.4rem;
+  border-radius: 0.4rem;
+}
+.search-tabs__total-results {
+  color: #9e9e9e;
+}
+.search-tabs__sections-item.active .search-tabs__sectionts-link {
+  box-shadow: 0 0 0 1px #0064f9;
+  color: #0064f9;
+  background: #fff;
+  border-color: #0064f9;
+}
+.search-tabs__sections-item.active .search-tabs__sectionts-link svg {
+  fill: #0064f9;
+}
+
+@media (max-width: 750px) {
+  .search-tabs .search-tabs__sections-list {
+    margin-right: 1rem;
+  }
+}
+
+
+@media (max-width: 650px) {
+  .search-tabs .search-tabs__sections-list {
+    margin-bottom: 1rem;
+  }
+}
