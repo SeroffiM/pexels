@@ -10,7 +10,7 @@
   line-height: 0.9;
   font-weight: 600;
 }
-.search-tabs__settings-item span {
+.search-tabs__settings-item > span {
   margin-right: 1rem;
 }
 .search-tabs__settings-item.active {
@@ -106,6 +106,19 @@
 }
 .search-tabs__settings-cancel::before {
   transform: rotate(-45deg);
+}
+
+@media (max-width: 900px) {
+  .search-tabs__settings-item > span {
+    max-width: 10.5rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .search-tabs__settings-item {
+    padding: 0.6rem 1.1rem 0.6rem 1.1rem;
+    font-size: 1.3rem;
+  }
 }
 
 @media (max-width: 650px) {

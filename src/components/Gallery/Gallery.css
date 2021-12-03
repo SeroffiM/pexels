@@ -1,6 +1,9 @@
 .img-wrapper {
   max-width: 520px;
 }
+.gallery-container {
+  padding-top: 10rem;
+}
 .gallery-img {
   width: 100%;
 }
@@ -40,7 +43,7 @@
   font-size: 2.6rem;
   line-height: 1.2;
   font-weight: 800;
-  padding: 3rem 0;
+  padding-bottom: 3rem;
   text-transform: capitalize;
 }
 @keyframes move {
@@ -54,9 +57,16 @@
     left: 110%;
   }
 }
-
+@media (max-width:900px) {
+  .gallery-loader__item  {
+    width: 1.7rem;
+    height: 1.7rem;
+    left: 3.3rem;
+  }
+}
 @media (max-width: 650px) {
   .gallery__title {
     padding: 2rem 0;
+    
   }
 }

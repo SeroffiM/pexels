@@ -25,3 +25,16 @@
 .search-tabs__sections-item.active .search-tabs__sectionts-link svg {
   fill: #0064f9;
 }
+
+@media (max-width: 750px) {
+  .search-tabs .search-tabs__sections-list {
+    margin-right: 1rem;
+  }
+}
+
+
+@media (max-width: 650px) {
+  .search-tabs .search-tabs__sections-list {
+    margin-bottom: 1rem;
+  }
+}
