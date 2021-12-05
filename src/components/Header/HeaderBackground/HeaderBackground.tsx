@@ -1,5 +1,6 @@
 import React, { useEffect, useState, ChangeEvent, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { getPhotos } from '../../../api/photoAPI';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { CategoriesList } from './CategoriesList/CategoriesList';
@@ -40,16 +41,8 @@ export const HeaderBackground: React.FC<IHeaderBackground> = ({
   const fetchImg = async () => {
     try {
       const category = categories[randomCategory()];
-      const response = await fetch(
-        `https://api.pexels.com/v1/search?query=${category}&per_page=1`,
-        {
-          headers: {
-            Authorization:
-              '563492ad6f917000010000014640aabb4e9d420cbe1c0df7daf4c2bf',
-          },
-        }
-      );
-      const data = await response.json();
+      const api = `https://api.pexels.com/v1/search?query=${category}&per_page=1`;
+      const data = await getPhotos(api);
       const { photographer, photographer_url, src } = data.photos[0];
       setBackground(() => {
         return {

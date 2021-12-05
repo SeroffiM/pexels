@@ -14,15 +14,8 @@ import {
   takeLatest,
   takeLeading,
 } from '@redux-saga/core/effects';
+import { getPhotos } from '../../api/photoAPI';
 
-const getPhotos = async (api: string) => {
-  const response = await fetch(api, {
-    headers: {
-      Authorization: '563492ad6f917000010000014640aabb4e9d420cbe1c0df7daf4c2bf',
-    },
-  });
-  return await response.json();
-};
 
 function* fetchPhotosSaga({ api }: FetchPhotosAction): any {
   try {
