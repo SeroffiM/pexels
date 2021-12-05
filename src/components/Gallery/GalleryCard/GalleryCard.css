@@ -7,6 +7,13 @@
   width: 100%;
   padding: 0 2rem 2rem;
 }
+.gallery-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
 .card-link {
   text-decoration: none;
   color: #e8e8e8;
@@ -15,9 +22,6 @@
 }
 .gallery-card {
   position: relative;
-}
-.gallery-card img {
-  width: 100%;
 }
 .card-info-overlay::before {
   content: '';
