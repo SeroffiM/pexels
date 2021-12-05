@@ -19,6 +19,8 @@ export interface IPhotos {
   src: {
     large: string;
   };
+  width: number;
+  height: number;
 }
 export const Gallery: React.FC<GalleryProps> = ({
   photos,
@@ -45,7 +47,14 @@ export const Gallery: React.FC<GalleryProps> = ({
       <ResponsiveMasonry columnsCountBreakPoints={{ 320: 2, 1077: 3, 1900: 4 }}>
         <Masonry gutter="1.65rem">
           {photos.map((photo) => {
-            const { photographer, photographer_url, src, id }: IPhotos = photo;
+            const {
+              photographer,
+              photographer_url,
+              src,
+              id,
+              width,
+              height,
+            }: IPhotos = photo;
 
             return (
               <GalleryCard
@@ -54,6 +63,8 @@ export const Gallery: React.FC<GalleryProps> = ({
                 photographer_url={photographer_url}
                 src={src}
                 key={id}
+                width={width}
+                height={height}
               />
             );
           })}

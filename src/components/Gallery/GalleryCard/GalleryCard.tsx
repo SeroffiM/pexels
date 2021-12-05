@@ -11,6 +11,8 @@ export const GalleryCard: React.FC<IPhotos> = ({
   photographer_url,
   src,
   id,
+  width,
+  height,
 }: IPhotos) => {
   const [isHoverd, setIsHoverd] = useState<boolean>(false);
   const [liked, setLiked] = useState<boolean>(false);
@@ -62,14 +64,15 @@ export const GalleryCard: React.FC<IPhotos> = ({
   const handleHover = () => {
     setIsHoverd(!isHoverd);
   };
-
+  const padding = (height / width) * 100;
   return (
     <div
       className="gallery-card"
       onMouseEnter={handleHover}
       onMouseLeave={handleHover}
+      style={{ paddingTop: `${padding}%` }}
     >
-      <img src={src.large} />
+      <img src={src.large} className="gallery-img" alt="gallery-img" />
       {isHoverd || isMobile ? (
         <div className="card-info card-info-overlay">
           {showAuthor ? (
