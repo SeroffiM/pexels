@@ -4,9 +4,9 @@ import { categoriesReducer } from './categories';
 
 export const RootReducer = combineReducers({
   photo: photoReducer,
-  categories:categoriesReducer
+  categories: categoriesReducer,
 });
 
-export type RootState = ReturnType<typeof RootReducer>
+export type RootState = ReturnType<typeof RootReducer>;
 
-export type AppDispatch = typeof RootReducer
+export type AppDispatch = typeof RootReducer;

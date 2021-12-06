@@ -29,28 +29,32 @@ export const SearchSetting: React.FC<ISearchSetting> = ({
   const [hover, setHover] = useState(false);
   const queryFilter = useQuery();
   const isMobile = useIsMobile();
+
   const handleHoverEnter = () => {
     if (!isMobile) {
       setHover(true);
     }
   };
+
   const handleHoverLeave = () => {
     if (!isMobile) {
       setHover(false);
     }
   };
+
   const closeSetting = (e: React.MouseEvent) => {
     e.stopPropagation();
     setHover(false);
   };
+
   const handleMobileTouch = () => {
     if (isMobile) {
       setHover(!hover);
     }
   };
+
   const handleActiveFilter = () => {
     let name = settingName;
-
     search_filters.forEach((item) => {
       if (item.filter === acitveFilter && acitveFilter) {
         name = item.filterName;
@@ -58,6 +62,7 @@ export const SearchSetting: React.FC<ISearchSetting> = ({
     });
     return name;
   };
+
   const resetFilterLink = () => {
     queryFilter.delete(setting);
     return queryFilter.toString();

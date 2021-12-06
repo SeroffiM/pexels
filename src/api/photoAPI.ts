@@ -1,8 +1,10 @@
 import { IPhotos } from './../components/Gallery/Gallery';
+
 interface IResponse {
   photos: IPhotos[];
   total_rusults: number;
 }
+
 export const getPhotos = async (api: string): Promise<IResponse> => {
   const response = await fetch(api, {
     headers: {

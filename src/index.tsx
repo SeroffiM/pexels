@@ -9,7 +9,6 @@ import App from './App';
 import './index.css';
 import { store } from './store/store';
 import { BrowserRouter as Router } from 'react-router-dom';
-
 import './i18n';
 
 ReactDOM.render(

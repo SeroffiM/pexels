@@ -19,11 +19,13 @@ export const SearchBar: React.FC<ISearchBar> = ({
   const [t] = useTranslation();
   const navigate = useNavigate();
   const query = useQuery().toString();
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     navigate(`/search/${value}?${query}`);
     handleQuery(value);
   };
+
   return (
     <div className="search-bar">
       <form onSubmit={handleSubmit}>

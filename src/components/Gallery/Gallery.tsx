@@ -23,6 +23,7 @@ export interface IPhotos {
   width: number;
   height: number;
 }
+
 export const Gallery: React.FC<GalleryProps> = ({
   photos,
   loading,
@@ -31,6 +32,7 @@ export const Gallery: React.FC<GalleryProps> = ({
   query,
 }: GalleryProps) => {
   const [t] = useTranslation();
+
   if (totalResults === 0 && !loading) {
     return (
       <h1 className="gallery__title">{`${t(
@@ -38,6 +40,7 @@ export const Gallery: React.FC<GalleryProps> = ({
       )} "${query}"`}</h1>
     );
   }
+
   return (
     <div className="gallery-container">
       {query ? (
@@ -47,17 +50,8 @@ export const Gallery: React.FC<GalleryProps> = ({
       ) : null}
       <ResponsiveMasonry columnsCountBreakPoints={{ 320: 2, 1077: 3, 1900: 4 }}>
         <Masonry gutter="1.65rem">
-          {photos.map((photo) => {
-            const {
-              photographer,
-              photographer_url,
-              src,
-              id,
-              width,
-              height,
-            }: IPhotos = photo;
-
-            return (
+          {photos.map(
+            ({ photographer, photographer_url, src, id, width, height }) => (
               <GalleryCard
                 id={id}
                 photographer={photographer}
@@ -67,8 +61,8 @@ export const Gallery: React.FC<GalleryProps> = ({
                 width={width}
                 height={height}
               />
-            );
-          })}
+            )
+          )}
         </Masonry>
       </ResponsiveMasonry>
       {loading ? (

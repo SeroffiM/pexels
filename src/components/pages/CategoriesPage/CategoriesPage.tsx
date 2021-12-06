@@ -8,6 +8,7 @@ import {
 import { Gallery } from '../../Gallery/Gallery';
 import { SearchTabs } from './SearchTabs/SearchTabs';
 import { useQuery } from '../../../hooks/useQuery';
+
 export const CategoriesPage: React.FC = () => {
   const { query } = useParams();
   const search = useQuery();
@@ -19,21 +20,24 @@ export const CategoriesPage: React.FC = () => {
   const orientation = search.get('orientation') || '';
   const size = search.get('size') || '';
 
+  const setNextPage = () => {
+    setPage((prev) => prev + 1);
+  };
+
   const FetchMoreImg = () => {
     const baseURL = encodeURI(
       `https://api.pexels.com/v1/search?query=${query}&page=${
         page + 1
       }&per_page=20${searchParams}`
     );
-    if (
-      window.scrollY + window.innerHeight + 50 > document.body.scrollHeight &&
-      !photos.loading &&
-      !photos.error &&
-      photos.photos.length < photos.total_results
-    ) {
-      fetchMorePhotos(baseURL);
-      setPage((prev) => prev + 1);
-    }
+    fetchMorePhotos(
+      baseURL,
+      setNextPage,
+      photos.loading,
+      photos.error,
+      photos.photos.length,
+      photos.total_results
+    );
   };
 
   useEffect(() => {
@@ -43,7 +47,7 @@ export const CategoriesPage: React.FC = () => {
     );
     fetchPhotos(baseURL);
     window.scrollTo(0, 0);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, search]);
 
   useEffect(() => {
@@ -51,7 +55,7 @@ export const CategoriesPage: React.FC = () => {
     return () => {
       window.removeEventListener('scroll', FetchMoreImg);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [photos.loading]);
 
   return (

@@ -5,7 +5,10 @@ interface ILikeIcon {
   handleLikes: () => void;
 }
 
-export const LikeIcon: React.FC<ILikeIcon> = ({ liked, handleLikes }: ILikeIcon) => {
+export const LikeIcon: React.FC<ILikeIcon> = ({
+  liked,
+  handleLikes,
+}: ILikeIcon) => {
   const like = (
     <svg
       className="card-like"
@@ -31,5 +34,9 @@ export const LikeIcon: React.FC<ILikeIcon> = ({ liked, handleLikes }: ILikeIcon)
     </svg>
   );
 
-  return <i className="card__like-wrapper" onClick={ handleLikes }>{ liked ? like : no_like }</i>;
+  return (
+    <i className="card__like-wrapper" onClick={handleLikes}>
+      {liked ? like : no_like}
+    </i>
+  );
 };

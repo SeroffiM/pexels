@@ -57,8 +57,8 @@
     left: 110%;
   }
 }
-@media (max-width:900px) {
-  .gallery-loader__item  {
+@media (max-width: 900px) {
+  .gallery-loader__item {
     width: 1.7rem;
     height: 1.7rem;
     left: 3.3rem;
@@ -67,6 +67,5 @@
 @media (max-width: 650px) {
   .gallery__title {
     padding: 2rem 0;
-    
   }
 }

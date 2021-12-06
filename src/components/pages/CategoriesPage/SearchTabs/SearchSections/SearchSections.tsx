@@ -17,6 +17,7 @@ export const SearchSections: React.FC<ISearchSections> = ({
   const [t] = useTranslation();
   const search = useQuery().toString();
   const filters = search ? `?${search}` : '';
+
   const getPhotosCount = () => {
     let count = totalResults;
     if (totalResults >= 1000) {
@@ -24,6 +25,7 @@ export const SearchSections: React.FC<ISearchSections> = ({
     }
     return count;
   };
+
   return (
     <ul className="search-tabs__sections-list">
       <li className="search-tabs__sections-item active">

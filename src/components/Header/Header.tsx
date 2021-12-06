@@ -8,12 +8,12 @@ export const Header: React.FC = () => {
   const match = useMatch('/search/:query');
   const matchMain = useMatch('/');
   const [queryNav, setQueryNav] = useState<string>('');
-
   const [queryBackground, setQueryBackground] = useState('');
 
   useEffect(() => {
     setQueryNav(match?.params.query || '');
   }, [match?.params.query]);
+
   const handleChangeNav = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setQueryNav(e.target.value);
@@ -23,14 +23,17 @@ export const Header: React.FC = () => {
     e.preventDefault();
     setQueryBackground(e.target.value);
   };
+
   const handleQuery = (value: string) => {
     setQueryNav(value);
     setQueryBackground(value);
   };
+
   const handleReturnHome = () => {
     setQueryBackground('');
     setQueryNav('');
   };
+
   return (
     <header className="header">
       <NavBar

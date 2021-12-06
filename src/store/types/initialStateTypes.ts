@@ -1,4 +1,5 @@
 import { IPhotos } from './../../components/Gallery/Gallery';
+
 export interface IInitialState {
   categories: string[];
   photo: IPhotoState;

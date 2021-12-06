@@ -21,23 +21,26 @@ export const Languages: React.FC = () => {
       lng_id: 'en',
     },
   ];
+
   const handleMouseHover = (): void => {
     if (!isMobile) {
       setHover(!hover);
     }
   };
+
   const handleMobileTocuh = () => {
     if (isMobile) {
       setHover(!hover);
     }
   };
+
   const handleLng = (lng: string) => {
     i18n.changeLanguage(lng);
   };
-  const getCurrentLngName = () => {
-    return languageSettings.find((item) => item.lng_id === currentLanguage)
-      ?.lng_name;
-  };
+
+  const getCurrentLngName = () =>
+    languageSettings.find((item) => item.lng_id === currentLanguage)?.lng_name;
+
   return (
     <div
       className="lng-wrapper"
@@ -47,7 +50,6 @@ export const Languages: React.FC = () => {
     >
       <p>{getCurrentLngName()}</p>
       <i className={`lng__arrow-down ${hover ? 'active' : ''}`}></i>
-
       {hover ? (
         <LanguagesModal
           languageSettings={languageSettings}

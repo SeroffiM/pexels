@@ -3,7 +3,7 @@ import {
   PhotoAction,
   payloadSuccessType,
   payloadErrorType,
-  apiFetchType
+  apiFetchType,
 } from '../types/actionTypes/photoActionTypes';
 
 export const fetchPhotosRequest = (api: apiFetchType): PhotoAction => ({
@@ -19,16 +19,18 @@ export const fetchMorePhotosRequest = (api: apiFetchType): PhotoAction => ({
 export const fetchPhotosSuccess = (data: payloadSuccessType): PhotoAction => ({
   type: PhotosActionTypes.FETCH_PHOTOS_SUCCESS,
   payload: {
-    photos:data.photos,
-    total_results:data.total_results 
+    photos: data.photos,
+    total_results: data.total_results,
   },
 });
 
-export const fetchMorePhotosSuccess = (data: payloadSuccessType): PhotoAction => ({
+export const fetchMorePhotosSuccess = (
+  data: payloadSuccessType
+): PhotoAction => ({
   type: PhotosActionTypes.FETCH_MORE_PHOTOS_SUCCESS,
   payload: {
-    photos:data.photos,
-    total_results:data.total_results 
+    photos: data.photos,
+    total_results: data.total_results,
   },
 });
 

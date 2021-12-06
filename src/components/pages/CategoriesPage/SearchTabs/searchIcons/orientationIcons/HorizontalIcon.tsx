@@ -10,17 +10,10 @@ export const HorizontalIcon: React.FC = () => {
       viewBox="0 0 24 16"
       version="1.1"
     >
-      <g
-        id="Page-1"
-        stroke="none"
-        strokeWidth="1"
-        // fill="none"
-        fillRule="evenodd"
-      >
+      <g id="Page-1" stroke="none" strokeWidth="1" fillRule="evenodd">
         <g
           id="Search-Filters->-Desktop->-Filter-Click"
           transform="translate(-914.000000, -184.000000)"
-          // fill="#9E9E9E"
           fillRule="nonzero"
         >
           <path

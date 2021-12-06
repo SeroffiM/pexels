@@ -11,11 +11,13 @@ import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { CategoriesList } from './CategoriesList/CategoriesList';
 import './HeaderBackground.css';
+
 interface IHeaderBackground {
   queryText: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
   handleQuery: (value: string) => void;
 }
+
 interface IBackground {
   img: string;
   link: string;
@@ -34,9 +36,11 @@ export const HeaderBackground: React.FC<IHeaderBackground> = ({
     link: '',
     author: '',
   });
+
   const randomCategory = useCallback(() => {
     return Math.floor(Math.random() * categories.length);
   }, [categories.length]);
+
   const getRandomCategories = useCallback(() => {
     const randomCategories = [];
     for (let i = 0; i <= 7; i++) {
@@ -44,6 +48,7 @@ export const HeaderBackground: React.FC<IHeaderBackground> = ({
     }
     return randomCategories;
   }, [categories, randomCategory]);
+
   const fetchImg = async () => {
     try {
       const category = categories[randomCategory()];
@@ -66,10 +71,12 @@ export const HeaderBackground: React.FC<IHeaderBackground> = ({
     fetchImg();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const randomCategories = useMemo<string[]>(
     () => getRandomCategories(),
     [getRandomCategories]
   );
+
   return (
     <section className="background-wrapper">
       <div className="background__img-wrapper">

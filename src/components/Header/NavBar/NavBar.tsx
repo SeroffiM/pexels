@@ -6,12 +6,14 @@ import { NavLink } from 'react-router-dom';
 import './NavBar.css';
 import { Languages } from './Languages/Languages';
 import { useIsMobile } from '../../../hooks/useIsMobile';
+
 interface INavBar {
   queryText: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
   handleQuery: (value: string) => void;
   handleReturnHome: () => void;
 }
+
 export const NavBar: React.FC<INavBar> = ({
   queryText,
   handleChange,
@@ -19,10 +21,10 @@ export const NavBar: React.FC<INavBar> = ({
   handleReturnHome,
 }: INavBar) => {
   const [position, setPosition] = useState<number>(0);
-
   const match = useMatch('/');
   const showSearchBar = position > 50 || !match;
   const isMobile = useIsMobile();
+
   const handleScroll = () => {
     setPosition(window.scrollY);
   };

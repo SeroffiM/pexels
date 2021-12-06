@@ -35,17 +35,17 @@ export const SearchSettings: React.FC<ISearchSettings> = ({
           filter: '',
         },
         {
-          filterName: t("categories.orientationSetting.horizontal"),
+          filterName: t('categories.orientationSetting.horizontal'),
           filter: 'landscape',
           svg: () => <HorizontalIcon />,
         },
         {
-          filterName: t("categories.orientationSetting.vertical"),
+          filterName: t('categories.orientationSetting.vertical'),
           filter: 'portrait',
           svg: () => <VerticalIcon />,
         },
         {
-          filterName: t("categories.orientationSetting.square"),
+          filterName: t('categories.orientationSetting.square'),
           filter: 'square',
           svg: () => <SquareIcon />,
         },
@@ -58,21 +58,21 @@ export const SearchSettings: React.FC<ISearchSettings> = ({
       activeFilter: size,
       search_filters: [
         {
-          filterName: t("categories.sizeSetting.all"),
+          filterName: t('categories.sizeSetting.all'),
           filter: '',
         },
         {
-          filterName: t("categories.sizeSetting.large"),
+          filterName: t('categories.sizeSetting.large'),
           filter: 'large',
           svg: () => <LargeIcon />,
         },
         {
-          filterName: t("categories.sizeSetting.medium"),
+          filterName: t('categories.sizeSetting.medium'),
           filter: 'medium',
           svg: () => <MediumIcon />,
         },
         {
-          filterName: t("categories.sizeSetting.small"),
+          filterName: t('categories.sizeSetting.small'),
           filter: 'small',
           svg: () => <SmallIcon />,
         },
@@ -82,19 +82,17 @@ export const SearchSettings: React.FC<ISearchSettings> = ({
 
   return (
     <ul className="search-tabs__settings-list">
-      {settings.map((item, index) => {
-        return (
-          <SearchSetting
-            setting={item.setting}
-            settingName={item.settingName}
-            acitveFilter={item.activeFilter}
-            svg={item.svg}
-            key={index}
-            search_filters={item.search_filters}
-            query={query}
-          />
-        );
-      })}
+      {settings.map((item, index) => (
+        <SearchSetting
+          setting={item.setting}
+          settingName={item.settingName}
+          acitveFilter={item.activeFilter}
+          svg={item.svg}
+          key={index}
+          search_filters={item.search_filters}
+          query={query}
+        />
+      ))}
     </ul>
   );
 };

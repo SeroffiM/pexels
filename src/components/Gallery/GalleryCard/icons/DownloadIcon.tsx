@@ -12,6 +12,7 @@ export const DownloadIcon: React.FC<IDownloadIcon> = ({
   id,
 }: IDownloadIcon) => {
   const [didMount, setDidMount] = useState(false);
+
   const getBlob = async () => {
     const response = await fetch(api);
     const blob = await response.blob();
@@ -23,6 +24,7 @@ export const DownloadIcon: React.FC<IDownloadIcon> = ({
     link.click();
     link.remove();
   };
+
   useEffect(() => {
     setDidMount(true);
     return () => {

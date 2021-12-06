@@ -18,7 +18,7 @@ export const GalleryCard: React.FC<IPhotos> = ({
   const [liked, setLiked] = useState<boolean>(false);
   const isMobile = useIsMobile();
   const showAuthor = useMediaQuery({ query: '(min-width: 550px)' });
-
+  const padding = (height / width) * 100;
 
   const getLikes = (): number[] => {
     let value = [];
@@ -26,9 +26,9 @@ export const GalleryCard: React.FC<IPhotos> = ({
     if (likes) {
       value = JSON.parse(likes);
     }
-
     return value;
   };
+
   const isLiked = () => {
     const values: number[] = getLikes();
     const isExist = values.find((item) => item === id);
@@ -51,14 +51,16 @@ export const GalleryCard: React.FC<IPhotos> = ({
     setLiked(!liked);
     window.localStorage.setItem('likes', JSON.stringify(values));
   };
+
   useEffect(() => {
     setLikes();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const handleHover = () => {
     setIsHoverd(!isHoverd);
   };
-  const padding = (height / width) * 100;
+
   return (
     <div
       className="gallery-card"
@@ -76,11 +78,7 @@ export const GalleryCard: React.FC<IPhotos> = ({
           ) : null}
           <div className="card-icons">
             <LikeIcon liked={liked} handleLikes={handleLikes} />
-            <DownloadIcon
-              api={src.large}
-              photographer={photographer}
-              id={id}
-            />
+            <DownloadIcon api={src.large} photographer={photographer} id={id} />
           </div>
         </div>
       ) : null}
