@@ -6,6 +6,7 @@ import { LanguagesModal } from './LanguagesModal';
 import { useIsMobile } from '../../../../hooks/useIsMobile';
 
 export const Languages: React.FC = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [t, i18n] = useTranslation();
   const [hover, setHover] = useState(false);
   const currentLanguage = i18next.resolvedLanguage;

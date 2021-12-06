@@ -1,4 +1,10 @@
-import React, { useEffect, useState, ChangeEvent, useMemo } from 'react';
+import React, {
+  useEffect,
+  useState,
+  ChangeEvent,
+  useMemo,
+  useCallback,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { getPhotos } from '../../../api/photoAPI';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
@@ -28,16 +34,16 @@ export const HeaderBackground: React.FC<IHeaderBackground> = ({
     link: '',
     author: '',
   });
-  const randomCategory = () => {
+  const randomCategory = useCallback(() => {
     return Math.floor(Math.random() * categories.length);
-  };
-  const getRandomCategories = () => {
+  }, [categories.length]);
+  const getRandomCategories = useCallback(() => {
     const randomCategories = [];
     for (let i = 0; i <= 7; i++) {
       randomCategories.push(categories[randomCategory()]);
     }
     return randomCategories;
-  };
+  }, [categories, randomCategory]);
   const fetchImg = async () => {
     try {
       const category = categories[randomCategory()];
@@ -58,8 +64,12 @@ export const HeaderBackground: React.FC<IHeaderBackground> = ({
 
   useEffect(() => {
     fetchImg();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const randomCategories = useMemo<string[]>(() => getRandomCategories(), []);
+  const randomCategories = useMemo<string[]>(
+    () => getRandomCategories(),
+    [getRandomCategories]
+  );
   return (
     <section className="background-wrapper">
       <div className="background__img-wrapper">

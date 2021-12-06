@@ -5,7 +5,7 @@ import { GalleryCard } from './GalleryCard/GalleryCard';
 import { useTranslation } from 'react-i18next';
 
 interface GalleryProps {
-  photos: any[];
+  photos: IPhotos[];
   loading: boolean;
   error: string | null;
   totalResults: number;
@@ -18,6 +18,7 @@ export interface IPhotos {
   photographer_url: string;
   src: {
     large: string;
+    landscape: string;
   };
   width: number;
   height: number;

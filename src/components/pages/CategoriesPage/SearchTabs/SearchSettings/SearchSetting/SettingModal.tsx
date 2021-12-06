@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useQuery } from '../../../../../../hooks/useQuery';
 
 interface ISettingModal {
   query: string | undefined;

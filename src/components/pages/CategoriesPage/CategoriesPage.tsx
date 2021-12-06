@@ -43,6 +43,7 @@ export const CategoriesPage: React.FC = () => {
     );
     fetchPhotos(baseURL);
     window.scrollTo(0, 0);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, search]);
 
   useEffect(() => {
@@ -50,6 +51,7 @@ export const CategoriesPage: React.FC = () => {
     return () => {
       window.removeEventListener('scroll', FetchMoreImg);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [photos.loading]);
 
   return (

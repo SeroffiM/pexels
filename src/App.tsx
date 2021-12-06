@@ -7,7 +7,7 @@ import { CategoriesPage } from './components/pages/CategoriesPage/CategoriesPage
 import { useTranslation } from 'react-i18next';
 
 const App: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <>
       <Header />

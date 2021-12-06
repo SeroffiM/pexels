@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { Gallery } from '../../Gallery/Gallery';
 import './MainPage.css';
@@ -14,7 +14,7 @@ export const MainPage: React.FC = () => {
   const fetchPhotos = useFetchPhotos();
   const fetchMorePhotos = useFetchMorePhotos();
 
-  const FetchMoreImg = () => {
+  const FetchMoreImg = useCallback(() => {
     const baseURL = `https://api.pexels.com/v1/curated?page=${
       page + 1
     }&per_page=20`;
@@ -27,13 +27,14 @@ export const MainPage: React.FC = () => {
       fetchMorePhotos(baseURL);
       setPage((prev) => prev + 1);
     }
-  };
+  }, [fetchMorePhotos, page, photos.error, photos.loading, photos.photos.length, photos.total_results]);
 
   useEffect(() => {
     const baseURL = `https://api.pexels.com/v1/curated?page=${page}&per_page=20`;
     if (photos.photos.length <= photos.total_results) {
       fetchPhotos(baseURL);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -41,7 +42,7 @@ export const MainPage: React.FC = () => {
     return () => {
       window.removeEventListener('scroll', FetchMoreImg);
     };
-  }, [photos.loading]);
+  }, [FetchMoreImg, photos.loading]);
 
   return (
     <>

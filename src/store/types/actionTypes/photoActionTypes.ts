@@ -1,3 +1,4 @@
+import { IPhotos } from './../../../components/Gallery/Gallery';
 export enum PhotosActionTypes {
   FETCH_PHOTOS = 'FETCH_PHOTOS',
   FETCH_PHOTOS_SUCCESS = 'FETCH_PHOTOS_SUCCESS',
@@ -7,7 +8,7 @@ export enum PhotosActionTypes {
 }
 
 export type payloadSuccessType = {
-  photos: any[];
+  photos: IPhotos[];
   total_results: number;
 };
 export type payloadErrorType = string;

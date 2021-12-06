@@ -53,6 +53,7 @@ export const GalleryCard: React.FC<IPhotos> = ({
   };
   useEffect(() => {
     setLikes();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const handleHover = () => {
     setIsHoverd(!isHoverd);

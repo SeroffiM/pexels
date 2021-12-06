@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent } from 'react';
 import { SearchIcon } from './SearchIcon';
 import './SearchBar.css';
 import { useNavigate } from 'react-router-dom';

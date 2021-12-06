@@ -16,27 +16,26 @@ import {
 } from '@redux-saga/core/effects';
 import { getPhotos } from '../../api/photoAPI';
 
-
-function* fetchPhotosSaga({ api }: FetchPhotosAction): any {
+function* fetchPhotosSaga({ api }: FetchPhotosAction): unknown {
   try {
     const data = yield call(getPhotos, api);
     yield put(fetchPhotosSuccess(data));
-  } catch (e: any) {
+  } catch (e: unknown) {
     console.log(e);
-
-    yield put(fetchPhotosError(e));
+    if (e instanceof Error) {
+      yield put(fetchPhotosError(e.message));
+    }
   }
 }
 
-function* fetchMorePhotosSaga({ api }: FetchPhotosAction): any {
+function* fetchMorePhotosSaga({ api }: FetchPhotosAction): unknown {
   try {
     const data = yield call(getPhotos, api);
-
     yield put(fetchMorePhotosSuccess(data));
-  } catch (e: any) {
-    console.log(e);
-
-    yield put(fetchPhotosError(e));
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      yield put(fetchPhotosError(e.message));
+    }
   }
 }
 
