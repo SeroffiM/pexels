@@ -19,12 +19,22 @@
 }
 .categories__link {
   text-decoration: none;
+  position: relative;
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   opacity: 0.8;
   line-height: 1.8rem;
   font-weight: 300;
   white-space: nowrap;
+}
+.categories__link::after {
+  position: absolute;
+  content: ',';
+  right: -3px;
+  top: 0;
+}
+.categories__item:last-child .categories__link::after {
+  content: '';
 }
 .categories__link:hover {
   opacity: 1;
