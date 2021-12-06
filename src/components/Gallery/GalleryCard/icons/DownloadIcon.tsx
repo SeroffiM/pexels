@@ -1,23 +1,30 @@
 import React, { useState, useEffect } from 'react';
 
 interface IDownloadIcon {
-  downloadLink: string;
+  api: string;
   id: number;
   photographer: string;
 }
 
 export const DownloadIcon: React.FC<IDownloadIcon> = ({
-  downloadLink,
+  api,
   photographer,
   id,
 }: IDownloadIcon) => {
-  
   const [didMount, setDidMount] = useState(false);
-  
-
+  const getBlob = async () => {
+    const response = await fetch(api);
+    const blob = await response.blob();
+    const download_link = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = download_link;
+    link.download = `${photographer.replace(' ', '-')}-${id}.jpg`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  };
   useEffect(() => {
     setDidMount(true);
-    ;
     return () => {
       setDidMount(false);
     };
@@ -28,11 +35,7 @@ export const DownloadIcon: React.FC<IDownloadIcon> = ({
   }
 
   return (
-    <a
-      className="card__download-wrapper"
-      href={downloadLink}
-      download={`${photographer.replace(' ', '-')}-${id}.jpg`}
-    >
+    <div className="card__download-wrapper" onClick={getBlob}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
@@ -48,6 +51,6 @@ export const DownloadIcon: React.FC<IDownloadIcon> = ({
           <path d="M32,87h44c2.2,0,4-1.8,4-4s-1.8-4-4-4H32c-2.2,0-4,1.8-4,4S29.8,87,32,87z"></path>
         </g>
       </svg>
-    </a>
+    </div>
   );
 };

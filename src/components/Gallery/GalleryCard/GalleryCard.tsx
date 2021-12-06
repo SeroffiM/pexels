@@ -16,15 +16,9 @@ export const GalleryCard: React.FC<IPhotos> = ({
 }: IPhotos) => {
   const [isHoverd, setIsHoverd] = useState<boolean>(false);
   const [liked, setLiked] = useState<boolean>(false);
-  const [downloadLink, setDownloadLink] = useState('');
   const isMobile = useIsMobile();
   const showAuthor = useMediaQuery({ query: '(min-width: 550px)' });
-  const getBlob = async () => {
-    const response = await fetch(src.large);
-    const blob = await response.blob();
-    const download_link = URL.createObjectURL(blob);
-    setDownloadLink(download_link);
-  };
+
 
   const getLikes = (): number[] => {
     let value = [];
@@ -58,7 +52,6 @@ export const GalleryCard: React.FC<IPhotos> = ({
     window.localStorage.setItem('likes', JSON.stringify(values));
   };
   useEffect(() => {
-    getBlob();
     setLikes();
   }, []);
   const handleHover = () => {
@@ -83,7 +76,7 @@ export const GalleryCard: React.FC<IPhotos> = ({
           <div className="card-icons">
             <LikeIcon liked={liked} handleLikes={handleLikes} />
             <DownloadIcon
-              downloadLink={downloadLink}
+              api={src.large}
               photographer={photographer}
               id={id}
             />
